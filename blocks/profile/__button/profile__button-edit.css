@@ -11,5 +11,16 @@
 }
 
 .profile__button-edit:hover {
-    opacity: .6;
+    opacity: .7;
+}
+
+@media screen and (max-width: 680px) {
+    .profile__button-edit {
+        margin-left: 10px;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 8px;
+        background-image: url(../../../images/button-edit-320px.svg);
+    }
 }
