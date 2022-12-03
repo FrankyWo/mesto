@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="./script/index.js"></script>
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
@@ -16,7 +17,7 @@
 
     <main class="contet">
         <section class="profile">
-            <img class="profile__avatar" src="./images/Avatar-image.jpg" alt="#">
+            <img class="profile__avatar" src="./images/Avatar-image.jpg" alt="Фотография профиля.">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button class="profile__button-edit" type="button"></button>
@@ -28,7 +29,8 @@
         <section class="elements">
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.jpg"
+                    alt="Старая, полуразрушенная крепость в горах.">
                 <div class="elements__container">
                     <h2 class="elements__title">Карачаевск</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -36,7 +38,8 @@
             </div>
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png"
+                    alt="Степь, закат. В далеке виднеются горы.">
                 <div class="elements__container">
                     <h2 class="elements__title">Домбай</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -44,7 +47,8 @@
             </div>
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.png"
+                    alt="Вид на высокие заснеженные горы.">
                 <div class="elements__container">
                     <h2 class="elements__title">Гора Эльбрус</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -52,7 +56,8 @@
             </div>
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1088404-unsplash.jpg"
+                    alt="Старая, полуразрушенная крепость в горах">
                 <div class="elements__container">
                     <h2 class="elements__title">Карачаево-Черкесия</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -60,7 +65,8 @@
             </div>
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1404681-unsplash.png"
+                    alt="Степь, закат. В далеке виднеются горы.">
                 <div class="elements__container">
                     <h2 class="elements__title">Домбай</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -68,7 +74,8 @@
             </div>
 
             <div class="elements__card">
-                <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Карачаевск">
+                <img class="elements__image" src="./images/kirill-pershin-1556355-unsplash.png"
+                    alt="Вид на высокие заснеженные горы.">
                 <div class="elements__container">
                     <h2 class="elements__title">Гора Эльбрус</h2>
                     <button class="elements__button-like" type="button"></button>
@@ -79,6 +86,16 @@
         <footer class="footer">
             <p class="footer__copyright">&commat; 2022 Mesto Russia</p>
         </footer>
+
+        <div class="popup">
+            <form class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="popup__input popup__input_name" name="input-name" type="text" placeholder="Имя">
+                <input class="popup__input popup__input_job" name="job-input" type="text" placeholder="Описание">
+                <button class="popup__button-submit" type="submit">Сохранить</button>
+                <button class="popup__button-close" type="button"></button>
+            </form>
+        </div>
 
     </main>
 </body>
