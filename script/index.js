@@ -1,11 +1,16 @@
 const popup = document.querySelector('.popup');
-const buttonEditOpen = document.querySelector('.profile__button-edit');
-const buttonClose = document.querySelector('.popup__button-close');
-const getName = document.querySelector('.profile__name');
-const getJob = document.querySelector('.profile__description');
+let buttonEditOpen = document.querySelector('.profile__button-edit');
+let buttonClose = document.querySelector('.popup__button-close');
+let getName = document.querySelector('.profile__name');
+let getJob = document.querySelector('.profile__description');
 let editForm = document.querySelector('.popup__container');
 let nameInput = editForm.querySelector('.popup__input_name');
 let jobInput = editForm.querySelector('.popup__input_job');
+
+var button = document.getElementsByClassName('elements__button-like')[0];
+button.addEventListener("click", function () {
+    button.style.backgroundImage = 'url(../../../images/button-like_active.svg)';
+});
 
 function openPopup() {
     popup.classList.add('popup__opened');
@@ -19,8 +24,8 @@ function closePopup() {
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
-    getName.textContent = `${nameInput.value}`;
-    getJob.textContent = `${jobInput.value}`;
+    getName.textContent = nameInput.value;
+    getJob.textContent = jobInput.value;
     closePopup();
 };
 
