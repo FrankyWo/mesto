@@ -4,15 +4,10 @@ let buttonClose = document.querySelector('.popup__button-close');
 let getName = document.querySelector('.profile__name');
 let getJob = document.querySelector('.profile__description');
 let editForm = document.querySelector('.popup__container');
-let nameInput = editForm.querySelector('.popup__input_name');
-let jobInput = editForm.querySelector('.popup__input_job');
+let nameInput = editForm.querySelector('.popup__input_type_name');
+let jobInput = editForm.querySelector('.popup__input_type_job');
 
-var button = document.getElementsByClassName('elements__button-like')[0];
-button.addEventListener("click", function () {
-    button.style.backgroundImage = 'url(../../../images/button-like_active.svg)';
-});
-
-function openPopup() {
+ function openPopup() {
     popup.classList.add('popup__opened');
     nameInput.value = getName.textContent;
     jobInput.value = getJob.textContent;
