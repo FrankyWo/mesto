@@ -8,13 +8,13 @@ let nameInput = editForm.querySelector('.popup__input_type_name');
 let jobInput = editForm.querySelector('.popup__input_type_job');
 
  function openPopup() {
-    popup.classList.add('popup__opened');
+    popup.classList.add('popup_opened');
     nameInput.value = getName.textContent;
     jobInput.value = getJob.textContent;
 };
 
 function closePopup() {
-    popup.classList.remove('popup__opened');
+    popup.classList.remove('popup_opened');
 };
 
 function formSubmitHandler(evt) {
