@@ -28,7 +28,6 @@ const initialCards = [
 const popup = document.querySelector('.popup');
 const popupEditForm = document.querySelector('.popup_edit-form');
 const popupAddForm = document.querySelector('.popup_add-form');
-const popupOpenImage = document.querySelector('.popup_image-form');
 
 const buttonEditOpen = document.querySelector('.profile__button-edit');
 const buttonAddOpen = document.querySelector('.profile__button-add');
@@ -43,6 +42,10 @@ const jobInput = editForm.querySelector('.popup__input_type_job');
 const cardNameInput = document.querySelector('#card-name');
 const titleInput = document.querySelector('.popup__input_type_title');
 const linkInput = document.querySelector('.popup__input_type_link');
+
+const popupImage = document.querySelector('.popup_image-form');
+const popupImagePlace = document.querySelector('.popup__image-place');
+const popupImageTitle = document.querySelector('.popup__image-title');
 
 const elementsContainer = document.querySelector('.elements');
 
@@ -100,6 +103,13 @@ const createCard = (cardLink, cardTitle) => {
     // Btn "delete"
     elementCard.querySelector('.elements__button-delete').addEventListener('click', function () {
         elementCard.remove();
+    });
+    // popup "Image"
+    elementCard.querySelector('.elements__image').addEventListener('click', function () {
+        popupImage.classList.add('popup_opened');
+        popupImagePlace.src = cardLink;
+        popupImageTitle.alt = cardTitle;
+        popupImageTitle.textContent = cardTitle;
     });
 
     return elementCard;
