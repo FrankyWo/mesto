@@ -129,6 +129,9 @@ function formSubmitCard(evt) {
     const cardTitle = cardTitleInput.value
     renderCard(createCard(cardLink, cardTitle));
     closePopup(popupAddForm);
+
+    cardLinkInput.value = "";
+    cardTitleInput.value = "";
 };
 
 cardNameInput.addEventListener('submit', formSubmitCard);
