@@ -12,3 +12,7 @@
     opacity: 0;
     transition: visibility .3s, opacity .3s linear;
 }
+
+.popup:last-of-type {
+    background-color: rgb(0 0 0 / 0.9);
+}

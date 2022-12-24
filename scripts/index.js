@@ -54,8 +54,8 @@ buttonClose.forEach(button => button.addEventListener('click', () => {
     closePopup(popup);
 }));
 
-function openPopup() {
-    popup.classList.add('popup_opened');
+function openPopup(item) {
+    item.classList.add('popup_opened');
 };
 
 function closePopup(item) {
@@ -68,18 +68,31 @@ buttonEditOpen.addEventListener('click', function () {
     jobInput.value = getJob.textContent;
 });
 
-buttonAddOpen.addEventListener('click', function () {
-    popupAddForm.classList.add('popup_opened');
-});
-
-function formSubmitProfile(evt) {
+function submitProfileForm(evt) {
     evt.preventDefault();
     getName.textContent = nameInput.value;
     getJob.textContent = jobInput.value;
     closePopup(popupEditForm);
 };
 
-popupEditForm.addEventListener('submit', formSubmitProfile);
+buttonAddOpen.addEventListener('click', function () {
+    openPopup(popupAddForm);
+    // popupAddForm.classList.add('popup_opened');
+});
+
+function submitCardForm(evt) {
+    evt.preventDefault();
+    const cardLink = cardLinkInput.value;
+    const cardTitle = cardTitleInput.value
+    renderCard(createCard(cardLink, cardTitle));
+    closePopup(popupAddForm);
+
+    cardLinkInput.value = "";
+    cardTitleInput.value = "";
+};
+
+cardNameInput.addEventListener('submit', submitCardForm);
+popupEditForm.addEventListener('submit', submitProfileForm);
 
 const elementInfo = initialCards.map(function (item) {
     return {
@@ -91,10 +104,12 @@ const elementInfo = initialCards.map(function (item) {
 const createCard = (cardLink, cardTitle) => {
     const elementTemplate = document.querySelector('#element-template').content;
     const elementCard = elementTemplate.querySelector('.elements__card').cloneNode(true);
+    const elementCardImage = elementCard.querySelector('.elements__image');
 
-    elementCard.querySelector('.elements__image').src = cardLink;
     elementCard.querySelector('.elements__title').textContent = cardTitle;
-
+    elementCard.alt = cardTitle;
+    elementCardImage.src = cardLink;
+    
     // Switch "like"
     elementCard.querySelector('.elements__button-like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('elements__button-like_active');
@@ -105,8 +120,8 @@ const createCard = (cardLink, cardTitle) => {
         elementCard.remove();
     });
     // popup "Image"
-    elementCard.querySelector('.elements__image').addEventListener('click', function () {
-        popupImage.classList.add('popup_opened');
+    elementCardImage.addEventListener('click', function () {
+        openPopup(popupImage);
         popupImagePlace.src = cardLink;
         popupImageTitle.alt = cardTitle;
         popupImageTitle.textContent = cardTitle;
@@ -122,16 +137,3 @@ const renderCard = (newCard) => {
 elementInfo.forEach((item) => {
     renderCard(createCard(item.link, item.name));
 });
-
-function formSubmitCard(evt) {
-    evt.preventDefault();
-    const cardLink = cardLinkInput.value;
-    const cardTitle = cardTitleInput.value
-    renderCard(createCard(cardLink, cardTitle));
-    closePopup(popupAddForm);
-
-    cardLinkInput.value = "";
-    cardTitleInput.value = "";
-};
-
-cardNameInput.addEventListener('submit', formSubmitCard);
