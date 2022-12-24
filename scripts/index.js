@@ -40,8 +40,8 @@ const nameInput = editForm.querySelector('.popup__input_type_name');
 const jobInput = editForm.querySelector('.popup__input_type_job');
 
 const cardNameInput = document.querySelector('#card-name');
-const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_link');
+const cardTitleInput = document.querySelector('.popup__input_type_title');
+const cardLinkInput = document.querySelector('.popup__input_type_link');
 
 const popupImage = document.querySelector('.popup_image-form');
 const popupImagePlace = document.querySelector('.popup__image-place');
@@ -125,8 +125,8 @@ elementInfo.forEach((item) => {
 
 function formSubmitCard(evt) {
     evt.preventDefault();
-    const cardLink = linkInput.value;
-    const cardTitle = titleInput.value
+    const cardLink = cardLinkInput.value;
+    const cardTitle = cardTitleInput.value
     renderCard(createCard(cardLink, cardTitle));
     closePopup(popupAddForm);
 };
