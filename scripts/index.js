@@ -43,12 +43,10 @@ function closePopupByEscape(evt) {
 
 function openPopup(item) {
     item.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEscape);
 };
 
 function closePopup(item) {
     item.classList.remove('popup_opened');
-    document.addEventListener('keydown', closePopupByEscape);
 };
 
 buttonEditOpen.addEventListener('click', function () {
@@ -79,6 +77,7 @@ function submitCardForm(evt) {
     cardTitleInput.value = "";
 };
 
+document.addEventListener('keydown', closePopupByEscape);
 cardNameInput.addEventListener('submit', submitCardForm);
 popupEditForm.addEventListener('submit', submitProfileForm);
 
@@ -125,3 +124,12 @@ const renderCard = (newCard) => {
 elementInfo.forEach((item) => {
     renderCard(createCard(item.link, item.name));
 });
+
+const validationConfig = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__btn_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+};
