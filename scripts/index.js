@@ -22,10 +22,10 @@ const popupImageTitle = document.querySelector('.popup__image-title');
 
 const elementsContainer = document.querySelector('.elements');
 
-let activePopup = null;
+//let activePopup = null;
 
-//const popups = document.querySelectorAll('.popup');
-/*popups.forEach((popup) => {
+const popups = Array.from(document.querySelectorAll('.popup'));
+popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
             closePopup(popup);
@@ -34,7 +34,7 @@ let activePopup = null;
             closePopup(popup);
         };
     });
-}); */
+}); 
 
 /*function closePopupByEscape(evt) {
     if (evt.key === "Escape") {
@@ -43,17 +43,12 @@ let activePopup = null;
     };
 };*/
 
-function openPopup(popup) {
-    activePopup = popup;
-    popup.classList.add('popup_opened');
-    document.addEventListener('click', closePopupByTarget);
-    document.addEventListener('keydown', сlosePopupByEscape);
+function openPopup(item) {
+    item.classList.add('popup_opened');
 };
 
-function closePopup() {
-    activePopup.classList.remove('popup_opened');
-    document.removeEventListener('click', closePopupByTarget);
-    document.removeEventListener('keydown', сlosePopupByEscape);
+function closePopup(item) {
+    item.classList.remove('popup_opened');
 };
 
 function closePopupByTarget(evt) {
