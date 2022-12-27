@@ -34,19 +34,27 @@ popups.forEach((popup) => {
     });
 });
 
-/*function closePopupByEscape(evt) {
+/*function сlosePopupByEscape(evt) {
+    if (evt.code === 'Escape' && popup.classList.contains('popup_opened')) {
+        closePopup(popup);
+    };
+};*/
+
+function closePopupByEscape(evt) {
     if (evt.key === "Escape") {
         const openPopup = document.querySelector('.popup_opened');
         closePopup(openPopup);
     };
-};*/
+};
 
 function openPopup(item) {
     item.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEscape);
 };
 
 function closePopup(item) {
     item.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupByEscape);
 };
 
 buttonEditOpen.addEventListener('click', function () {
