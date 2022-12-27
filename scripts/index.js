@@ -88,6 +88,7 @@ const elementInfo = initialCards.map(function (item) {
     };
 });
 
+// Исправил/добавил на то, что как мне кажеться просит ревью.
 function openPopupImage(cardLink, cardTitle) {
     openPopup(popupImage);
     popupImagePlace.src = cardLink;
@@ -114,11 +115,13 @@ const createCard = (cardLink, cardTitle) => {
         elementCard.remove();
     });
 
+    // Исправил/добавил на то, что как мне кажеться просит ревью.
     elementCardImage.addEventListener('click', () => {
         openPopupImage(cardLink, cardTitle);
     });
 
-    // popup "Image"
+    // Было до исправлений
+    // popup "Image" Было до исправлений
     /*elementCardImage.addEventListener('click', function () {
         openPopup(popupImage);
         popupImagePlace.src = cardLink;
