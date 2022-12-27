@@ -1,5 +1,4 @@
 const popup = document.querySelector('.popup');
-const popups = document.querySelectorAll('.popup');
 const popupEditForm = document.querySelector('.popup_edit-form');
 const popupAddForm = document.querySelector('.popup_add-form');
 
@@ -23,7 +22,10 @@ const popupImageTitle = document.querySelector('.popup__image-title');
 
 const elementsContainer = document.querySelector('.elements');
 
-popups.forEach((popup) => {
+let activePopup = null;
+
+//const popups = document.querySelectorAll('.popup');
+/*popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
             closePopup(popup);
@@ -32,7 +34,7 @@ popups.forEach((popup) => {
             closePopup(popup);
         };
     });
-});
+}); */
 
 /*function closePopupByEscape(evt) {
     if (evt.key === "Escape") {
@@ -41,12 +43,29 @@ popups.forEach((popup) => {
     };
 };*/
 
-function openPopup(item) {
-    item.classList.add('popup_opened');
+function openPopup(popup) {
+    activePopup = popup;
+    popup.classList.add('popup_opened');
+    document.addEventListener('click', closePopupByTarget);
+    document.addEventListener('keydown', сlosePopupByEscape);
 };
 
-function closePopup(item) {
-    item.classList.remove('popup_opened');
+function closePopup() {
+    activePopup.classList.remove('popup_opened');
+    document.removeEventListener('click', closePopupByTarget);
+    document.removeEventListener('keydown', сlosePopupByEscape);
+};
+
+function closePopupByTarget(evt) {
+    if (evt.target.classList.contains('popup')) {
+        closePopup(evt.target);
+    };
+};
+
+function сlosePopupByEscape(evt) {
+    if (evt.key === 'Escape' && activePopup.classList.contains('popup_opened')) {
+        closePopup(activePopup);
+    };
 };
 
 buttonEditOpen.addEventListener('click', function () {
@@ -94,7 +113,7 @@ function openPopupImage(cardLink, cardTitle) {
     popupImagePlace.src = cardLink;
     popupImageTitle.alt = cardTitle;
     popupImageTitle.textContent = cardTitle;
-}
+};
 
 const createCard = (cardLink, cardTitle) => {
     const elementTemplate = document.querySelector('#element-template').content;
