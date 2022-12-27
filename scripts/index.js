@@ -34,12 +34,6 @@ popups.forEach((popup) => {
     });
 });
 
-/*function сlosePopupByEscape(evt) {
-    if (evt.code === 'Escape' && popup.classList.contains('popup_opened')) {
-        closePopup(popup);
-    };
-};*/
-
 function closePopupByEscape(evt) {
     if (evt.key === "Escape") {
         const openPopup = document.querySelector('.popup_opened');
@@ -85,7 +79,6 @@ function submitCardForm(evt) {
     cardTitleInput.value = "";
 };
 
-//document.addEventListener('keydown', closePopupByEscape);
 cardNameInput.addEventListener('submit', submitCardForm);
 popupEditForm.addEventListener('submit', submitProfileForm);
 
@@ -98,10 +91,10 @@ const elementInfo = initialCards.map(function (item) {
 
 // Исправил/добавил на то, что как мне кажеться просит ревью.
 function openPopupImage(cardLink, cardTitle) {
-    openPopup(popupImage);
     popupImagePlace.src = cardLink;
     popupImageTitle.alt = cardTitle;
     popupImageTitle.textContent = cardTitle;
+    openPopup(popupImage);
 };
 
 const createCard = (cardLink, cardTitle) => {
