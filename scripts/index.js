@@ -124,10 +124,10 @@ const createCard = (cardLink, cardTitle) => {
     // Было до исправлений
     // popup "Image" Было до исправлений
     /*elementCardImage.addEventListener('click', function () {
-        openPopup(popupImage);
         popupImagePlace.src = cardLink;
         popupImageTitle.alt = cardTitle;
         popupImageTitle.textContent = cardTitle;
+        openPopup(popupImage);
     });*/
 
     return elementCard;
