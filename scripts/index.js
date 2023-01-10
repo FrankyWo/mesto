@@ -43,18 +43,20 @@ function closePopupByEscape(evt) {
 
 function openPopup(item) {
     item.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEscape);// исправил
+    document.addEventListener('keydown', closePopupByEscape);
 };
 
 function closePopup(item) {
     item.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupByEscape);// исправил
+    document.removeEventListener('keydown', closePopupByEscape);
 };
 
 buttonEditOpen.addEventListener('click', function () {
     openPopup(popupEditForm);
     nameInput.value = getName.textContent;
     jobInput.value = getJob.textContent;
+    setButtonState(popupEditForm);
+    setErrorState(popupEditForm);
 });
 
 function submitProfileForm(evt) {
@@ -66,6 +68,8 @@ function submitProfileForm(evt) {
 
 buttonAddOpen.addEventListener('click', function () {
     openPopup(popupAddForm);
+    resetPopup();
+    setButtonState(popupAddForm);
 });
 
 function submitCardForm(evt) {
@@ -74,9 +78,15 @@ function submitCardForm(evt) {
     const cardTitle = cardTitleInput.value
     renderCard(createCard(cardLink, cardTitle));
     closePopup(popupAddForm);
+    evt.target.reset();
 
-    cardLinkInput.value = "";
-    cardTitleInput.value = "";
+    //cardLinkInput.value = "";
+    //cardTitleInput.value = "";
+};
+
+function resetPopup() {
+    cardLinkInput.value = '';
+    cardTitleInput.value = '';
 };
 
 cardNameInput.addEventListener('submit', submitCardForm);
@@ -89,7 +99,6 @@ const elementInfo = initialCards.map(function (item) {
     };
 });
 
-// Исправил/добавил на то, что как мне кажеться просит ревью.
 function openPopupImage(cardLink, cardTitle) {
     popupImagePlace.src = cardLink;
     popupImageTitle.alt = cardTitle;
@@ -116,19 +125,9 @@ const createCard = (cardLink, cardTitle) => {
         elementCard.remove();
     });
 
-    // Исправил/добавил на то, что как мне кажеться просит ревью.
     elementCardImage.addEventListener('click', () => {
         openPopupImage(cardLink, cardTitle);
     });
-
-    // Было до исправлений
-    // popup "Image" Было до исправлений
-    /*elementCardImage.addEventListener('click', function () {
-        popupImagePlace.src = cardLink;
-        popupImageTitle.alt = cardTitle;
-        popupImageTitle.textContent = cardTitle;
-        openPopup(popupImage);
-    });*/
 
     return elementCard;
 };
@@ -141,11 +140,4 @@ elementInfo.forEach((item) => {
     renderCard(createCard(item.link, item.name));
 });
 
-const validationConfig = {
-    formSelector: '.popup__container',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__btn_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-};
+enableValidation(validationConfig);
