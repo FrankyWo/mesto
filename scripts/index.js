@@ -70,6 +70,7 @@ buttonAddOpen.addEventListener('click', function () {
     openPopup(popupAddForm);
     resetPopup();
     setButtonState(popupAddForm);
+    setErrorState(popupAddForm);
 });
 
 function submitCardForm(evt) {
@@ -78,7 +79,6 @@ function submitCardForm(evt) {
     const cardTitle = cardTitleInput.value
     renderCard(createCard(cardLink, cardTitle));
     closePopup(popupAddForm);
-    evt.target.reset();
 
     //cardLinkInput.value = "";
     //cardTitleInput.value = "";
@@ -115,12 +115,10 @@ const createCard = (cardLink, cardTitle) => {
     elementCard.alt = cardTitle;
     elementCardImage.src = cardLink;
 
-    // Switch "like"
     elementCard.querySelector('.elements__button-like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('elements__button-like_active');
     });
 
-    // Btn "delete"
     elementCard.querySelector('.elements__button-delete').addEventListener('click', function () {
         elementCard.remove();
     });
@@ -139,5 +137,3 @@ const renderCard = (newCard) => {
 elementInfo.forEach((item) => {
     renderCard(createCard(item.link, item.name));
 });
-
-enableValidation(validationConfig);
